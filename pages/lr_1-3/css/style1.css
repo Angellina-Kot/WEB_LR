@@ -1,0 +1,101 @@
+/*универсальный селектор*/
+* {
+    /*обнуление свойств(нет отступов по умолчанию) */
+    margin: 0;
+}
+
+/* селектор класса*/
+.class1 {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgba(35, 0, 235, 0.844);
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.text {
+    font-family: 'Boxtoon', sans-serif;
+    text-align: center;
+}
+
+.align-c {
+    text-align: center;
+}
+
+/* селектор тега*/
+p {
+    font-family: cursive;
+    color: rgb(5, 5, 218);
+}
+
+/* Контекстные селекторы */
+p b {
+    font-family: Times, serif;
+    /* Семейство шрифта */
+    font-weight: bold;
+    /* Жирное начертание */
+    color: navy;
+    /* Синий цвет текста */
+}
+
+a {
+    text-decoration: none;
+    /* Убираем стандартную подчеркнутость ссылок */
+}
+/* псевдокласс */
+a:hover {
+    text-decoration: line-through;
+    /* Перечеркиваем текст при наведении */
+}
+
+/* соседние селекторы*/
+input+input {
+    background-color: rgba(17, 80, 255, 0.721);
+}
+
+/*Селекторы атрибутов*/
+/* Поля ввода типа text получат рамку */
+input[type="text"] {
+    border: 3px solid rgba(28, 8, 175, 0.679);
+}
+
+/* теговый класс */
+ul.custom-list {
+    list-style-type: none;
+    /* Убираем стандартные маркеры */
+}
+
+ul.custom-list li:before {
+    content: url('../image/ждун1.jpg');
+    /* Путь к вашему изображению */
+
+    width: 20px;
+    /* Ширина изображения (по желанию) */
+    height: 20px;
+    /* Высота изображения (по желанию) */
+}
+
+/* идентификаторы */
+#img {
+    filter: grayscale(100%);
+    /* Изображение становится черно-белым */
+    border-radius: 50%;
+    /* Делаем изображение круглым */
+}
+
+#img1 {
+    filter: grayscale(100%);
+    /* Изображение становится черно-белым */
+    filter: blur(5px);
+    /* Размытие на 5 пикселей */
+    filter: brightness(90%);
+    /*  яркость */
+    filter: contrast(70%);
+    /*  контрастность */
+    border-radius: 40px;
+    /* Скругляем углы */
+}
+
+/* дочерние селекторы */
+p>a {
+    background-color: rgba(255, 196, 243, 0.263);
+}

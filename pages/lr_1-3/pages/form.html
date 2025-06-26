@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример формы</title>
+    <style>
+        /* импорт css */
+        @import url("../css/style1.css");
+    </style>
+
+</head>
+
+<body>
+    <p><a id="top"></a></p>
+    <p><a href="../index.html">На главную</a></p>
+
+    <h1 class="class1">Форма на заполнение</h1>
+    <h2 class="align-c">Пример: Использование тега fieldset</h2>
+    <form>
+        <fieldset>
+            <legend>Введите контактную информацию</legend>
+            <label>Email:<br><input type="text" name="email"></label><br>
+            <label>Мобильный:<br><input type="tel" name="mobile" placeholder="+375 (XX) XXX-XX-XX"
+                    pattern="^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$"></label><br>
+            <label>Факс:<br><input type="text" name="fax"></label><br>
+            <label>Пароль: <br> <input type="password" name="password"></label>
+            <input type="submit">
+            <input name="reset" type="reset" value="Очистить">
+            <!-- <button type="submit">Отправить</button> -->
+        </fieldset>
+
+    </form>
+
+
+    <form action="action_form.php" method="POST">
+
+
+        <!--переключатели -->
+        <h2 class="align-c">Ответьте на приведенные ниже вопросы</h2>
+        <p>Сколько Вам лет?</p>
+        <ol>
+            <li><input type="radio" name="age" value="18" checked>младше 18</li>
+            <li><input type="radio" name="age" value="18-24">от 18 до 24</li>
+            <li><input type="radio" name="age" value="25-34">от 25 до 35</li>
+            <li><input type="radio" name="age" value="35-50">более 35</li>
+        </ol>
+
+        <p>Какие музыкальные жанры Вы любите?</p>
+        <ol>
+            <li><input type="checkbox" name="musik" value="juze" checked>Джаз</li>
+            <li><input type="checkbox" name="musik" value="bluse">Блюз</li>
+            <li><input type="checkbox" name="musik" value="rock">Рок</li>
+            <li><input type="checkbox" name="musik" value="shanson">Шансон</li>
+            <li><input type="checkbox" name="musik" value="kantry">Кантри</li>
+        </ol>
+
+
+
+
+        <p>Ознакомьтесь с информацией:</p>
+        <textarea name="info" readonly>
+        Данная форма не предназначена для сбора информации о пользователях, информация, которую вводит пользователь может быть вымышлена
+        </textarea>
+        <p>Ваше мнение о этом соглашении:</p>
+        <textarea name="comments" cols="24" rows="4">
+      Введите свой комментарий…
+    </textarea>
+
+        <!-- Раскрывающийся список -->
+        <p>Какой сегодня день недели?</p>
+        <select name="form_select">
+            <option value="mn">Понедельник</option>
+            <option value="td">Вторник</option>
+            <option value="wn">Среда</option>
+            <option value="th">Четверг</option>
+            <option value="fr">Пятница</option>
+            <option value="st">Суббота</option>
+            <option selected="selected" value="sn">Воскресенье</option>
+        </select>
+
+        <!-- Прокручиваемые списки -->
+        <p>Выберите любой вариант </p>
+        <select name="form_select2" size="3" multiple="multiple">
+            <option value="Значение 1">Первый вариант</option>
+            <option value="Значение 2">Второй вариант</option>
+            <option selected="selected" value="Значение 3">Третий вариант</option>
+            <option selected="selected" value="Значение 4">Четвертый вариант</option>
+            <option value="Значение 5">Пятый вариант</option>
+            <option value="Значение 6">Шестой вариант</option>
+        </select>
+
+        <p>Протестируйте кнопки</p>
+
+        <input name="reset" type="reset" value="Очистить поля">
+        <input type="submit">
+
+    </form>
+
+    <!-- ссылка на якорь -->
+    <p><a href="#top">Bверх</a></p>
+</body>
+
+</html>

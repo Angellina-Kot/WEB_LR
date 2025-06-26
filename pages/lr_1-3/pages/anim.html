@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Идентификаторы CSS</title>
+    <style>
+        /* Универсальный селектор */
+        * {
+
+            background-color: rgba(255, 190, 190, 0.192);
+        }
+
+        div {
+            margin: 10px;
+            border: 1px solid #222;
+        }
+
+        /* идентификаторы */
+        #l-r {
+            height: 200px;
+            width: 200px;
+            background-image: linear-gradient(to right, #f00, #ff0);
+            /* Градиент слева направо */
+        }
+
+        #circl {
+            height: 200px;
+            width: 200px;
+            background-image: radial-gradient(circle at top left, #fff, #000);
+            /* Круглый градиент */
+        }
+
+        #line1 {
+            height: 200px;
+            width: 200px;
+            background-image: linear-gradient(to right, #ff0000, #ffff00, #00ff00);
+            /* линейный градиент */
+        }
+
+        #line2 {
+            height: 200px;
+            width: 200px;
+            background-image: linear-gradient(45deg, yellow, blue);
+        }
+
+        /* Классы */
+        .turn {
+            transform: rotate(180deg);
+            /*поворот на 180*/
+        }
+
+        .transform {
+            width: 200px;
+            height: 200px;
+            transition: transform 0.8s ease;
+            /* Добавляем плавность */
+        }
+
+        .transform:hover {
+            transform: rotate(180deg);
+            /* Поворачиваем при наведении */
+        }
+
+        .transform-1 {
+            transform: rotate(45deg);
+            /* поворот */
+        }
+
+        .transform-2 {
+            transform: rotate(30deg) translate(100px, -40px);
+            /* поворот и смещение*/
+        }
+
+        .scale-1 {
+            transform: scale(0.5);
+            /* Масштабируем элемент */
+        }
+
+        .offset-1 {
+            transform: translate(150px, 10px);
+            /* смещение */
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <p><a href="../index.html">На главную</a></p>
+    <h1 style="font-family: Artika;">Привет, я очень интересная страница</h1>
+    <div id="circl" class="scale-1"></div>
+    <div id="l-r" class="offset-1"></div>
+    <div id="line1" class="transform-1"></div>
+    <div id="line2" class="transform-2"></div>
+    <iframe src="https://gifer.com/embed/XOsX" width=240 height=300 allowFullScreen></iframe><br>
+    <img class="turn" src="../media/xox.gif" alt="что-то" width=240 height=300><br>
+    <br> <img class="transform" src="../media/xox.gif" alt="">
+</body>
+
+</html>

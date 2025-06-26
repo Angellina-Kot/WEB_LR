@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заявка на перевозку</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #fff;
+    }
+
+    .form-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #e38b00;
+      font-weight: bold;
+    }
+
+    .step-indicator {
+      text-align: right;
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .tab-header {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .tab-header div {
+      padding: 8px 16px;
+      border-bottom: 2px solid transparent;
+      color: #888;
+    }
+
+    .tab-header .active {
+      color: #f90;
+      border-color: #f90;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-group {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"] {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .button {
+      background: linear-gradient(to bottom, #ffb84d, #ff9900);
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #e68a00;
+    }
+
+    @media (max-width: 768px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
+
+      .button-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <div class="form-header">ЗАЯВКА НА ПЕРЕВОЗКУ</div>
+    <div class="step-indicator">Шаг 1 из 3</div>
+
+    <div class="tab-header">
+      <div class="active">Информация о заказчике и грузе</div>
+      <div>Отправитель груза</div>
+      <div>Получатель груза</div>
+    </div>
+
+    <form>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Заказчик (плательщик) *</label>
+          <input type="text" required />
+        </div>
+        <div class="form-group">
+          <label>Электронная почта *</label>
+          <input type="email" required />
+        </div>
+        <div class="form-group">
+          <label>Контактное лицо ФИО *</label>
+          <input type="text" required />
+        </div>
+        <div class="form-group">
+          <label>Телефон (xxx) xxx-xx-xx *</label>
+          <input type="tel" required />
+        </div>
+        <div class="form-group">
+          <label>Краткое наименование груза</label>
+          <input type="text" />
+        </div>
+        <div class="form-group">
+          <label>Количество мест</label>
+          <input type="number" />
+        </div>
+        <div class="form-group">
+          <label>Вид упаковки</label>
+          <input type="text" />
+        </div>
+        <div class="form-group">
+          <label>Объём груза</label>
+          <input type="text" />
+        </div>
+        <div class="form-group">
+          <label>Объявленная стоимость</label>
+          <input type="text" />
+        </div>
+        <div class="form-group">
+          <label>Вес груза</label>
+          <input type="text" />
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button type="button" class="button">Скачать бланк заявки</button>
+        <button type="submit" class="button">Продолжить</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

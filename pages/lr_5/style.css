@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+p {
+    font-size: 15px;
+    text-align: center;
+}
+
+/*стили для блоков*/
+.top {
+    height: 100px;
+    width: 100%;
+    margin: 1px;
+    background-color: #096eeb;
+}
+
+.block-1 {
+    width: 30%;
+    background-color: #a4cdffa3;
+    margin: 1px;
+    height: 100px;
+}
+
+.block-2 {
+    width: 70%;
+    background-color: #0073ffa7;
+    margin: 1px;
+    height: 100px;
+}
+
+.block-3 {
+    width: 35%;
+    background-color: #175aace8;
+    margin: 1px;
+    height: 200px;
+}
+
+.block-4 {
+    width: 50%;
+    background-color: #2c75cde8;
+    margin: 1px;
+    height: 200px;
+}
+.block-5 {
+    width: 15%;
+    background-color: #0a3d7ce8;
+    margin: 1px;
+    height: 200px;
+}
+.block-6 {
+    width: 15%;
+    background-color: #0a3d7ce8;
+    margin: 1px;
+    height: 200px;
+}
+

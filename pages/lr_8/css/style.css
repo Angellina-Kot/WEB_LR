@@ -1,0 +1,430 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    display: flex;
+    /* height: 70%; */
+    flex: 1;
+    /* Заставляет #main расти и заполнять оставшееся пространство */
+}
+
+#k1 {
+    flex: 25%;
+    display: flex;
+    flex-direction: column;
+    order: -1;
+}
+
+#k1>#k1_1 {
+    flex: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.kkk {
+    flex: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#k1>#k1_2 {
+    flex: 50%;
+}
+
+
+#main>#k2 {
+    flex: 50%;
+    font-size: 18px;
+}
+
+#k2>#k2_2,
+#k2>#k2_4 {
+    margin: 3px;
+    background: #3bcfd7b7;
+    border-radius: 100px;
+    position: relative;
+    flex: 25%;
+    height: auto;
+    padding: 20px;
+}
+
+#k2>#k2_1,
+#k2>#k2_3 {
+    margin: 3px;
+    background: #b0abab;
+    border-radius: 100px;
+    position: relative;
+    flex: 25%;
+    height: auto;
+    padding: 20px;
+    background-color: rgb(99, 148, 227);
+}
+
+#main>#k3 {
+    display: flex;
+    flex: 25%;
+    flex-direction: column;
+}
+
+#k3>#k3_1,
+#k3>#k3_3 {
+    height: 50%;
+    flex-direction: column;
+}
+
+#k3>#k3_2 {
+    height: 50%;
+}
+
+header,
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15%;
+    background-color: rgba(127, 255, 212, 0.655);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    color: rgb(12, 26, 228);
+}
+
+
+h1,
+h2 {
+
+    font-size: 15px;
+}
+
+
+.img_2 {
+    width: 50%;
+    transition: width 0.5s ease;
+}
+
+.class__1 {
+    position: relative;
+}
+
+/* Стили шапки */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Логотип */
+.logo img {
+    height: 50px;
+}
+
+/* Навигация */
+nav {
+    position: relative;
+    max-width: 90%;
+    /* margin: 0 auto; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#menu-toggle {
+    display: none;
+}
+
+.menu a {
+    color: rgb(12, 26, 228);
+    text-decoration: none;
+}
+
+/* Иконка гамбургер-меню */
+.menu-icon {
+    font-size: 30px;
+    padding: 15px;
+    cursor: pointer;
+    background: #333;
+    color: white;
+    display: block;
+    z-index: 20;
+    position: relative;
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+}
+
+.menu ul {
+    list-style: none;
+    text-align: center;
+}
+
+.menu li {
+    margin: 20px 0;
+}
+
+.menu a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+#menu-toggle:checked+.menu-icon+.menu {
+    transform: translateY(0);
+}
+
+#menu-toggle:checked~body {
+    overflow: hidden;
+}
+
+.menu__body {
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.menu__body::-webkit-scrollbar {
+    display: none;
+}
+
+nav>a img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    font-size: 25px;
+    /* transition: .5s; */
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav>label {
+    display: none;
+}
+
+#burger-toggle {
+    display: none;
+}
+
+@media (max-width: 784px) {
+
+    #main>#k3 {
+        display: none;
+    }
+
+    nav>label {
+        position: relative;
+        display: block;
+        height: 25px;
+        width: 30px;
+    }
+
+    nav>label::after,
+    nav>label::before,
+    nav>label span {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: .3s;
+    }
+
+    nav>label::before {
+        content: "";
+        top: 0;
+    }
+
+    nav>label::after {
+        content: "";
+        bottom: 0;
+    }
+
+    nav>label span {
+        top: 11px;
+    }
+
+    #burger-toggle:checked~label::after {
+        transform: rotate(45deg);
+        bottom: 10px;
+    }
+
+    #burger-toggle:checked~label::before {
+        transform: rotate(-45deg);
+        top: 12px;
+    }
+
+    #burger-toggle:checked~label span {
+        transform: rotate(-45deg);
+        top: 12px;
+    }
+
+    #k3 {
+        display: none;
+    }
+
+    ul {
+        position: fixed;
+        left: 0;
+        right: 0;
+        background-color: rgb(127, 255, 212);
+        padding-top: 90px;
+        z-index: -1;
+        flex-direction: column;
+        text-align: center;
+        left: -100vw;
+        right: 100vw;
+    }
+
+    #burger-toggle:checked~ul {
+        left: 0;
+        right: 0;
+    }
+
+    li a {
+        font-size: 24px;
+    }
+}
+
+
+
+
+/* стили для карточки */
+.product-card {
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.product-image {
+    position: relative;
+    text-align: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+.badge {
+    position: absolute;
+    bottom: 2px;
+    left: 10px;
+    background: #d3bdf2;
+    color: #6b3fc4;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.label-top {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ffeb99;
+    color: #000;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 3px 5px;
+    border-radius: 3px;
+    text-align: right;
+}
+
+.product-info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.title {
+    font-weight: bold;
+    color: #d95b0a;
+    font-size: 14px;
+}
+
+.volume {
+    font-size: 13px;
+    color: #666;
+}
+
+.price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.price-current {
+    font-weight: bold;
+    font-size: 16px;
+    color: #222;
+}
+
+.price-old {
+    text-decoration: line-through;
+    font-size: 13px;
+    color: #888;
+}
+
+.extra {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.discount {
+    background: #ffd9a0;
+    color: #a34b00;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.bonus {
+    background: #e3e4ff;
+    color: #5247d6;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+}

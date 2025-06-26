@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lr_13-14</title>
+    <style>
+        .styled {
+            color: red;
+            background-color: gray;
+            font-family: Verdana, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            border: 1px solid green;
+            /* padding: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+    <p id="fullName">Кот Ангелина Степановна</p>
+    <button onclick="applyStyles()">Нажми меня</button><br>
+    <a href="http://ggpk.by/Raspisanie/Files/PZT.html">Расписание GGPK</a><br>
+    <img id="myImage" src="./img1.jpg" alt="Какое-то изображение" style="width: 400px; height: auto;">
+
+    <script>
+        // Получить информацию о статусе загрузки документа
+        window.onload = function () {
+            setTimeout(() => {
+                alert("Документ загружен полностью!");
+            }, 5000);
+        }
+
+        // Удалить изображение при щелчке по нему
+        document.getElementById("myImage").onclick = function () {
+            this.remove();
+        };
+
+        // Применить стили к элементу после нажатия на кнопку
+        function applyStyles() {
+            document.getElementById("fullName").classList.add("styled");
+        }
+
+        // Получить имя компьютера (пример, может не сработать в браузере)
+        setTimeout(() => {
+            const computerName = navigator.userAgent; // Используем userAgent как пример
+            document.body.insertAdjacentHTML('beforeend', '<p>Имя компьютера в сети:' + computerName);
+        }, 4000);
+    </script>
+
+</body>
+
+</html>

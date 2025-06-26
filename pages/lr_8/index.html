@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>adaptiv</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* margin: 20px; */
+        }
+
+        .form-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #e38b00;
+            font-weight: bold;
+        }
+
+        .step-indicator {
+            text-align: right;
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .tab-header {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .tab-header div {
+            padding: 8px 16px;
+            border-bottom: 2px solid transparent;
+            color: #888;
+        }
+
+        .tab-header .active {
+            color: #f90;
+            border-color: #f90;
+        }
+
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form>label {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"] {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .button {
+            background: linear-gradient(to bottom, #ffb84d, #ff9900);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #e68a00;
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 1 100%;
+            }
+
+            .button-row {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+        }
+
+
+        .error {
+            border: 2px solid red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- шапка -->
+    <header>
+        <div class="logo">
+            <img src="./img/logo.png" alt="Логотип">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#cat1">Кот 1</a></li>
+                <li><a href="#cat2">Кот 2</a></li>
+                <li><a href="#cat3">Кот 3</a></li>
+                <li><a href="#cat4">Кот 4</a></li>
+                <li><a href="#cat5">Кот 5</a></li>
+                <li><a href="#cat6">Кот 6</a></li>
+            </ul>
+
+            <a href="/">
+                <img src="./Untitled70_20231129182816.png" alt="">
+            </a>
+            <input id="burger-toggle" type="checkbox">
+            <label for="burger-toggle">
+                <span></span>
+            </label>
+            <ul class="menu__body header__list">
+                <li><a href="#" class="header__link">Кот 1</a></li>
+                <li><a href="#" class="header__link">Кот 2</a></li>
+                <li><a href="#" class="header__link">Кот 3</a></li>
+                <li><a href="#" class="header__link">Кот 4</a></li>
+                <li><a href="#" class="header__link">Кот 5</a></li>
+                <li><a href="#" class="header__link">Кот 6</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- основной блок -->
+    <div id="main">
+        <div id="k1">
+            <div class="k1_1">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./img/img6.jpg.png" alt="Подарочный набор Корги" />
+                        <span class="badge">Скоро закончится</span>
+                        <span class="label-top">СУВЕНИРНЫЙ<br>НАБОР</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="title">Подарочный набор "Корги"</p>
+                        <p class="volume">330 мл, OZ</p>
+                        <div class="price-block">
+                            <span class="price-current">18,80 руб.</span>
+                            <span class="price-old">19,79 руб.</span>
+                        </div>
+                        <div class="extra">
+                            <span class="discount">–5%</span>
+                            <span class="bonus">0,19</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="k1_2" class="kkk">
+                <img src="./img/img4.jpg" class="img_2">
+            </div>
+        </div>
+
+        <div id="k2">
+            <div id="k2_1">
+                <div class="cat" id="cat1">Коты и кошки — одни из самых популярных домашних питомцев. Еще бы, ведь
+                    существует так
+                    много
+                    причин, чтобы умилиться
+                    этим пушистым чудикам! Перечислим же 20 самых интересных из них.</div>
+            </div>
+            <div id="k2_2">
+                <div id="cat2">Интересный факт</div>
+                <div>Хотя черный кот — символ неудачи во многих странах, в Великобритании и Австралии их считают
+                    символом удачи.</div>
+            </div>
+            <div id="k2_3">
+                <div class="cat" id="cat3">Если хвост двигается из стороны в сторону, то в это время кот о чём-то
+                    раздумывает или
+                    принимает решение.</div>
+            </div>
+            <div class="form-wrapper k2_4">
+                <div class="form-header">ЗАЯВКА НА ПЕРЕВОЗКУ</div>
+                <div class="step-indicator">Шаг 1 из 3</div>
+
+                <div class="tab-header">
+                    <div class="active">Информация о заказчике и грузе</div>
+                    <div>Отправитель груза</div>
+                    <div>Получатель груза</div>
+                </div>
+
+                <form id="cargoForm" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customer">Заказчик (плательщик) *</label>
+                            <input type="text" id="customer" name="customer" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Электронная почта *</label>
+                            <input type="email" id="email" name="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Контактное лицо ФИО *</label>
+                            <input type="text" id="contact" name="contact" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон (xxx) xxx-xx-xx *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(123) 456-78-90">
+                        </div>
+                        <div class="form-group">
+                            <label>Краткое наименование груза</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Количество мест</label>
+                            <input type="number">
+                        </div>
+                        <div class="form-group">
+                            <label>Вид упаковки</label>
+                            <input type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Объём груза</label>
+                            <input type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Объявленная стоимость</label>
+                            <input type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Вес груза</label>
+                            <input type="text" />
+                        </div>
+                    </div>
+
+                    <div class="button-row">
+                        <button type="button" class="button">Скачать бланк заявки</button>
+                        <button type="submit" class="button">Продолжить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="k3">
+            <div id="k3_1" class="kkk">
+                <img src="./img/img3.jpg" class="img_2">
+            </div>
+            <div id="k3_2" class="kkk">
+                <img src="./img/img4.jpg" class="img_2">
+            </div>
+        </div>
+
+    </div>
+    <!-- Подвал -->
+    <footer>Подвал</footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("cargoForm");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Предотвратить отправку
+
+                let isValid = true;
+                clearErrors();
+
+                // Поля
+                const customer = document.getElementById("customer");
+                const email = document.getElementById("email");
+                const contact = document.getElementById("contact");
+                const phone = document.getElementById("phone");
+
+                // Проверка: Заполненность
+                if (customer.value.trim() == "") {
+                    showError(customer, "Поле обязательно для заполнения");
+                    isValid = false;
+                } else if (customer.value.length > 50) {
+                    showError(customer, "Максимум 50 символов");
+                    isValid = false;
+                }
+
+                // Email
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email.value.trim() === "") {
+                    showError(email, "Введите email");
+                    isValid = false;
+                } else if (!emailPattern.test(email.value)) {
+                    showError(email, "Неверный формат email");
+                    isValid = false;
+                }
+
+                // ФИО
+                if (contact.value.trim() === "") {
+                    showError(contact, "Введите ФИО");
+                    isValid = false;
+                } else if (contact.value.length > 50) {
+                    showError(contact, "ФИО слишком длинное");
+                    isValid = false;
+                }
+
+                // Телефон
+                const phonePattern = /^\(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+                if (phone.value.trim() == "") {
+                    showError(phone, "Введите номер телефона");
+                    isValid = false;
+                } else if (!phonePattern.test(phone.value)) {
+                    showError(phone, "Формат: (123) 456-78-90");
+                    isValid = false;
+                }
+
+                // Если всё ОК — отправить форму
+                if (isValid) {
+                    form.submit();
+                }
+            });
+
+            function showError(input, message) {
+                input.classList.add("error");
+                const error = document.createElement("div");
+                error.className = "error-message";
+                error.innerText = message;
+                input.parentElement.appendChild(error);
+            }
+
+            function clearErrors() {
+                const errors = form.querySelectorAll(".error-message");
+                errors.forEach(e => e.remove());
+
+                const fields = form.querySelectorAll(".error");
+                fields.forEach(f => f.classList.remove("error"));
+            }
+        });
+    </script>
+
+    <!-- маска ввода -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phoneInput = document.getElementById("phone");
+
+            phoneInput.addEventListener("input", function (e) {
+                let x = phoneInput.value.replace(/\D/g, "").substring(0, 10); // Только цифры, максимум 10
+                let formatted = "";
+
+                if (x.length > 0) formatted += "(" + x.substring(0, 3);
+                if (x.length >= 4) formatted += ") " + x.substring(3, 6);
+                if (x.length >= 7) formatted += "-" + x.substring(6, 8);
+                if (x.length >= 9) formatted += "-" + x.substring(8, 10);
+
+                phoneInput.value = formatted;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- 💎 -->

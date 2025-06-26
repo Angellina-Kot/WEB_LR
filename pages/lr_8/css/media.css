@@ -1,0 +1,136 @@
+@media (max-width: 1200px) {}
+
+/* 
+@media (max-width: 960px) {
+    #k3 {
+        display: none;
+    }
+
+    #k2_1,
+    #k2_2,
+    #k2_3,
+    #k2_4 {
+        font-size: 75%;
+        padding: 30px;
+    }
+
+
+    .kkk {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+    }
+
+    #k1 {
+        flex: 20%;
+    }
+
+    #main>#k2 {
+        flex: 70%;
+        font-size: 75%;
+    }
+}
+
+
+@media (max-width: 376px) {
+    #k1 {
+        display: none;
+
+    }
+
+    .img_2 {
+        width: 25%;
+    }
+
+    #k2_1,
+    #k2_2,
+    #k2_3,
+    #k2_4 {
+        font-size: 75%;
+        padding: 40px;
+    }
+} */
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 768px) {
+    #main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #main>#k1,
+    #main>#k3 {
+        flex: 100%;
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    #k2>#k2_1,
+    #k2>#k2_3,
+    #k2>#k2_2,
+    #k2>#k2_4 {
+        height: auto;
+        flex: 1 1 50%;
+        /* Две колонки */
+    }
+
+    #k3 {
+        display: none;
+    }
+
+    /* Адаптивное гамбургер-меню */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        /* top: 48px; */
+        right: 0;
+        background-color: rgb(127, 255, 212);
+        /* padding: 10px; */
+        width: 200px;
+    }
+
+    .menu li {
+        margin-bottom: 10px;
+    }
+
+    .menu-icon {
+        display: block;
+
+    }
+
+    #menu-toggle:checked~.menu {
+        display: flex;
+        z-index: 10;
+    }
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 480px) {
+
+    header,
+    footer {
+        height: 10%;
+    }
+
+    #main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #main>#k1
+     {
+        padding: 10px;
+        flex: 100%;
+    }
+
+    #k2>#k2_1,
+    #k2>#k2_3,
+    #k2>#k2_2,
+    #k2>#k2_4 {
+        flex: 1 1 100%;
+        padding: 35px;
+        height: auto;
+    }
+}

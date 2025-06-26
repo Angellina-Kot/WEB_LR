@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+/* Grid for multiple product cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  position: relative;
+  text-align: center;
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #d3bdf2;
+  color: #6b3fc4;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.label-top {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ffeb99;
+  color: #000;
+  font-weight: bold;
+  font-size: 10px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.product-info {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  font-weight: bold;
+  color: #d95b0a;
+  font-size: 14px;
+}
+
+.volume {
+  font-size: 13px;
+  color: #666;
+}
+
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price-current {
+  font-weight: bold;
+  font-size: 16px;
+  color: #222;
+}
+
+.price-old {
+  text-decoration: line-through;
+  font-size: 13px;
+  color: #888;
+}
+
+.extra {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.discount {
+  background: #ffd9a0;
+  color: #a34b00;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.bonus {
+  background: #e3e4ff;
+  color: #5247d6;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .title {
+    font-size: 13px;
+  }
+
+  .price-current {
+    font-size: 15px;
+  }
+
+  .price-old,
+  .volume,
+  .discount,
+  .bonus {
+    font-size: 11px;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <div class="product-image">
+            <img src="./img/img6.jpg.png" alt="Подарочный набор Корги" />
+            <span class="badge">Скоро закончится</span>
+            <span class="label-top">СУВЕНИРНЫЙ<br>НАБОР</span>
+        </div>
+        <div class="product-info">
+            <p class="title">Подарочный набор "Корги"</p>
+            <p class="volume">330 мл, OZ</p>
+            <div class="price-block">
+                <span class="price-current">18,80 руб.</span>
+                <span class="price-old">19,79 руб.</span>
+            </div>
+            <div class="extra">
+                <span class="discount">–5%</span>
+                <span class="bonus">💎 0,19</span>
+            </div>
+        </div></div>
+</body>
+</html>

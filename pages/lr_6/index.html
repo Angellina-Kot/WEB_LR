@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0px;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 1480px;
+            /* width: 100%; */
+            display: grid;
+            font-size: 18px;
+            margin: auto;
+            grid-template-columns: 25% 50% 25%;
+            grid-template-rows: 100px repeat(4, 18%) 100px;
+            grid-template-areas:
+                "header header header"
+                "k1_1 k2_1 k3_1"
+                "k1_1 k2_2 k3_1"
+                "k1_2 k2_3 k3_2"
+                "k1_2 k2_4 k3_2"
+                "footer footer footer"
+        }
+
+        header {
+            grid-area: header;
+            background: aquamarine;
+            color: rgb(15, 28, 213);
+            text-align: left;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: aquamarine;
+            text-align: left;
+            color: rgb(15, 28, 213);
+        }
+
+
+        #k1_1 {
+            grid-area: k1_1;
+            background-color: rgb(0, 251, 255);
+        }
+
+        #k1_2 {
+            grid-area: k1_2;
+            background-color: rgb(22, 232, 255);
+        }
+
+        #k2_1 {
+            grid-area: k2_1;
+            background-color: rgb(11, 89, 215);
+        }
+
+        #k2_3 {
+            grid-area: k2_3;
+            background-color: rgb(11, 89, 215);
+        }
+
+        #k2_2 {
+            grid-area: k2_2;
+            background-color: rgba(0, 255, 255, 0.168);
+        }
+
+        #k2_4 {
+            grid-area: k2_4;
+            background-color: rgba(0, 255, 255, 0.168);
+        }
+
+
+        #k3_1 {
+            grid-area: k3_1;
+            background-color: rgb(24, 251, 255);
+        }
+
+        #k3_3 {
+            grid-area: k3_3;
+            background-color: rgb(24, 251, 255);
+        }
+
+        #k3_2 {
+            grid-area: k3_2;
+            background-color: rgb(0, 200, 255);
+        }
+
+        header,
+        footer,
+        #k1_1,
+        #k1_2,
+        #k2_1,
+        #k2_2,
+        #k2_3,
+        #k2_4,
+        #k3_1,
+        #k3_2,
+        #k3_3 {
+            padding: 1px
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="main">
+        <header>Шапка</header>
+        
+        <div id="k1_1">1</div>
+        <div id="k1_2">2</div>
+
+        <div id="k2_1">3</div>
+        <div id="k2_2">4</div>
+        <div id="k2_3">5</div>
+        <div id="k2_4">6</div>
+
+        <div id="k3_1">7</div>
+        <div id="k3_2">8</div>
+
+        <footer>Подвал</footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lr_10-12</title>
+    <!-- №1 -->
+    <script type="text/javascript">
+        function show_Month() {
+            var d = new Date();
+            var Day = d.getMonth()+1;
+            document.write("Номер текущего месяца - " + Day);
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- №1 -->
+    <button onclick="show_Month()">показать месяц</button>
+    <br>
+
+    <!-- №2 -->
+    <script>
+        var b = 0;
+        while (b <= 11) {
+            document.write(b + ". Кот Ангелина");
+            document.write("<br>")
+            b++;
+        }
+    </script>
+    <br>
+
+    <!-- №3 -->
+    <script>
+        // Задаём массив из 7 целых чисел
+        let arr = [11, 24, 14, 8, 15, 61, 8];
+        document.write("Исходный массив: [" + arr.join(", ") + "]<br>");
+
+        // Максимальный элемент массива
+        const maxElement = Math.max(...arr);
+        document.write("Максимальный элемент: " + maxElement + "<br>");
+
+        // Сортируем массив по возрастанию
+        arr.sort((a, b) => a - b); // Используем метод sort()
+
+        // Выводим массив
+        document.write("Отсортированный массив: [" + arr.join(", ") + "]");
+    </script>
+    <br>
+
+    <!-- №4 -->
+    <div>
+        <p>Расчет выражения y=|(x-2)/(x-1)|</p>
+        <p><b>Введите значение x:</b></p>
+        <input id="inputX">
+        <button onclick="calculateY()">Рассчитать</button>
+        <div id="resultDiv"></div>
+    </div>
+    <br>
+
+    <!-- №5 -->
+    <script>
+        const s1 = "Я люблю Беларусь";
+        const s2 = "Я учусь в Политехническом колледже.";
+
+        // длина строки S2
+        const lengthOfS2 = s2.length;
+        document.write("Длина строки S2: " + lengthOfS2 + "<br>");
+
+        // Шестой символ строки S1
+        const sixthSymbol = s1.charAt(5);
+        document.write("Шестой символ строки S1: " + sixthSymbol + "<br>");
+
+        // ASCII-код шестого символа
+        const asciiCode = s1.charCodeAt(5);
+        document.write("ASCII-код шестого символа: " + asciiCode + "<br>");
+
+        // Замена слова "Беларусь" на "Гродно"
+        const replacedString = s1.replace("Беларусь", "Гродно");
+        document.write("Новая строка после замены: " + replacedString);
+    </script>
+
+</body>
+<script src="./script.js"></script>
+
+</html>
