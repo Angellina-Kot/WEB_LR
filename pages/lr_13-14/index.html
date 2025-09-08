@@ -25,24 +25,24 @@
     <img id="myImage" src="./img1.jpg" alt="Какое-то изображение" style="width: 400px; height: auto;">
 
     <script>
-        // Получить информацию о статусе загрузки документа
+        // информация о статусе загрузки документа
         window.onload = function () {
             setTimeout(() => {
                 alert("Документ загружен полностью!");
             }, 5000);
         }
 
-        // Удалить изображение при щелчке по нему
+        // удалить изображение при щелчке по нему
         document.getElementById("myImage").onclick = function () {
             this.remove();
         };
 
-        // Применить стили к элементу после нажатия на кнопку
+        //стили к элементу после нажатия на кнопку
         function applyStyles() {
             document.getElementById("fullName").classList.add("styled");
         }
 
-        // Получить имя компьютера (пример, может не сработать в браузере)
+        // имя компьютера в сети
         setTimeout(() => {
             const computerName = navigator.userAgent; // Используем userAgent как пример
             document.body.insertAdjacentHTML('beforeend', '<p>Имя компьютера в сети:' + computerName);

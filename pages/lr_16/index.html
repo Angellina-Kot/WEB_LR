@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            transition: opacity 0.5s;
+        }
+
+        #level-select {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Тренажер памяти</h1>
+    <p>Запомните последовательность!</p>
+
+    <label for="level-select">Выберите уровень:</label>
+    <select id="level-select">
+        <option value="5">Легкий (5 цветов)</option>
+        <option value="7">Средний (7 цветов)</option>
+        <option value="10">Сложный (10 цветов)</option>
+    </select>
+
+    <div id="game-board"></div>
+    <button id="start-button">Начать игру</button>
+    <p id="message"></p>
+
+    <script>
+        const _sequence = Symbol('sequence');
+        const _playerSequence = Symbol('playerSequence');
+        const _isPlaying = Symbol('isPlaying');
+
+        class Game {
+            constructor(colors) {
+                this.colors = colors;
+                this[_sequence] = [];
+                this[_playerSequence] = [];
+                this[_isPlaying] = false;
+                this.startButton = document.getElementById('start-button');
+                this.messageElement = document.getElementById('message');
+                this.boardElement = document.getElementById('game-board');
+
+                this.startButton.addEventListener('click', () => this.startGame());
+                this.createBoard();
+            }
+
+            // Публичный метод для начала игры
+            startGame() {
+                this.reset();
+                this.generateSequence();
+                this.showSequence();
+            }
+
+            // Публичный метод для сброса игры
+            reset() {
+                this[_sequence] = [];
+                this[_playerSequence] = [];
+                this[_isPlaying] = true;
+                this.messageElement.innerText = '';
+            }
+
+            // Публичный метод для генерации последовательности
+            generateSequence() {
+                const level = parseInt(document.getElementById('level-select').value);
+                for (let i = 0; i < level; i++) {
+                    const randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+                    this[_sequence].push(randomColor);
+                }
+            }
+
+            // Публичный метод для показа последовательности
+            showSequence() {
+                let index = 0;
+                const interval = setInterval(() => {
+                    if (index < this[_sequence].length) {
+                        this.highlightColor(this[_sequence][index]);
+                        index++;
+                    } else {
+                        clearInterval(interval);
+                        this.messageElement.innerText = 'Теперь ваша очередь!';
+                        this.enableInput();
+                    }
+                }, 1000);
+            }
+
+            // Публичный метод для подсветки цвета
+            highlightColor(color) {
+                const box = document.getElementById(color);
+                box.style.backgroundColor = "white";
+                setTimeout(() => {
+                    box.style.backgroundColor = color;
+                }, 500);
+            }
+
+            // Публичный метод для включения ввода от игрока
+            enableInput() {
+                this.colors.forEach(color => {
+                    const box = document.getElementById(color);
+                    box.onclick = () => this.playerTurn(color);
+                });
+            }
+
+            // Публичный метод для обработки ввода игрока
+            playerTurn(color) {
+                this[_playerSequence].push(color);
+                this.highlightColor(color);
+                this.checkSequence();
+            }
+
+            // Публичный метод для проверки последовательности
+            checkSequence() {
+                for (let i = 0; i < this[_playerSequence].length; i++) {
+                    if (this[_playerSequence][i] !== this[_sequence][i]) {
+                        this.endGame(false);
+                        return;
+                    }
+                }
+                if (this[_playerSequence].length === this[_sequence].length) {
+                    this.endGame(true);
+                }
+            }
+
+            // Публичный метод для завершения игры
+            endGame(win) {
+                this[_isPlaying] = false;
+                if (win) {
+                    this.messageElement.innerText = 'Вы победили!';
+                } else {
+                    this.messageElement.innerText = 'Вы проиграли! Правильная последовательность: ' + this[_sequence].join(', ');
+                }
+                this.disableInput();
+            }
+
+            // Публичный метод для отключения ввода
+            disableInput() {
+                this.colors.forEach(color => {
+                    const box = document.getElementById(color);
+                    box.onclick = null;
+                });
+            }
+
+            // Публичный метод для создания игрового поля
+            createBoard() {
+                this.colors.forEach(color => {
+                    const box = document.createElement('div');
+                    box.className = 'color-box';
+                    box.id = color;
+                    box.style.backgroundColor = color;
+                    this.boardElement.appendChild(box);
+                });
+            }
+        }
+
+        class AdvancedMemoryGame extends Game {
+            constructor(colors) {
+                super(colors);
+                this.level = 1; // Публичное свойство
+            }
+
+            // Переопределение метода генерации последовательности
+            generateSequence() {
+                const level = parseInt(document.getElementById('level-select').value);
+                for (let i = 0; i < level; i++) {
+                    const randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+                    this[_sequence].push(randomColor);
+                }
+                this.level++;
+            }
+
+            // Публичный метод для сброса уровня
+            resetLevel() {
+                this.level = 1;
+                this.reset();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const colors = ['red', 'green', 'blue', 'yellow'];
+            const game = new AdvancedMemoryGame(colors);
+        });
+    </script>
+</body>
+
+</html>

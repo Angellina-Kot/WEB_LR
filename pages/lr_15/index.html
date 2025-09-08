@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>lr_15</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .btn {
+            margin: 5px;
+            padding: 12px;
+            border-radius: 6px;
+            background-color: #844caf;
+            color: white;
+            cursor: pointer;
+        }
+
+        .info {
+            display: none;
+            font-family: Arial, sans-serif;
+            background: #fae3fd;
+            border-radius: 10px;
+            margin-top: 5px;
+            padding: 10px;
+        }
+
+        #output {
+            margin-top: 0px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            min-height: 50px;
+        }
+
+        p {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>ЛР №15</h2>
+
+    <div>
+        <label>Имя: </label>
+        <input type="text" id="name">
+        <label>Возраст: </label>
+        <input type="number" id="age">
+        <label>Город: </label>
+        <input type="text" id="city">
+        <button class="btn" onclick="addPerson()">Добавить объект</button>
+
+    </div>
+
+    <button class="btn" onclick="accessProperties()">Доступ к свойствам(перебор)</button>
+    <button class="btn" onclick="deleteProperty()">Удаление свойства (city)</button>
+    <button class="btn" onclick="checkProperty()">Проверка свойства</button>
+
+    <div>
+        <label>Введите имя: </label>
+        <input id="scan_name">
+        <button class="btn" onclick="scanByName()">Поиск</button>
+    </div>
+    <p>Окно вывода:</p>
+    <div id="output"></div>
+
+    <button class="btn" onclick="info()">...</button>
+
+    <div class="info">
+
+        <p>Дополнительная информация</p>
+        <h1>ЛР15 Объекты в Java Script</h1>
+        <p><b>1. Что понимается под объектом в Java Script? Приведите примеры известных вам объектов в Java Script.</b>
+        </p>
+        <p>Объекты используются для хранения коллекций различных значений и более сложных сущностей.
+            Объект может быть создан с помощью фигурных скобок {…} с необязательным списком свойств. Свойство – это пара
+            «ключ:
+            значение», где ключ – это строка (также называемая «именем свойства»), а значение может быть чем угодно.
+        </p>
+        <p>В JavaScript существует множество встроенных объектов, таких как Object, Array, String, Date, Math</p>
+
+        <p><b>5.Проверка существования свойства, оператор «in»</b></p>
+        <p>В отличие от многих других языков, особенность JavaScript-объектов в том, что можно получить доступ к любому
+            свойству.
+            Даже если свойства не существует – ошибки не будет!
+
+            При обращении к свойству, которого нет, возвращается undefined. Это позволяет просто проверить существование
+            свойства:
+            <b><br>let user = {};
+                <br>alert( user.noSuchProperty === undefined ); // true означает "свойства нет"
+            </b>
+        </p>
+
+        <p><b>6. Какая команда в JS позволяет выполнить перебор свойств объекта.Приведите пример.</b>
+            <br>Для перебора всех свойств объекта используется цикл for..in. Этот цикл отличается от изученного ранее
+            цикла
+            for(;;).
+            <br>Синтаксис:
+            <br>for (key in object) {
+            <br> // тело цикла выполняется для каждого свойства объекта
+            <br> }
+        </p>
+    </div>
+
+    <script>
+        // описание объектов 
+        let people = [
+            { name: "Иван", age: 25, city: "Москва" },
+            { name: "Анна", age: 30, city: "Казань" }
+        ];
+
+        // добавление объекта 
+        function addPerson() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let city = document.getElementById("city").value;
+
+            people.push({ name: name, age: parseInt(age), city: city });
+            document.getElementById("output").innerText = "Добавлен объект. ";
+        }
+
+        //доступ к свойствам
+        function accessProperties() {
+            let text = "Доступ к свойствам всех объектов:\n\n";
+            for (let i = 0; i < people.length; i++) {
+                let p = people[i];
+                text += "Имя: " + p.name + "\n";
+                text += "Возраст: " + p["age"] + "\n";
+                text += "Город: " + (p.city ?? "не указано") + "\n\n";
+            }
+            document.getElementById("output").innerText = text;
+        }
+
+        //удаление свойства
+        function deleteProperty() {
+            delete people[0].city;
+            document.getElementById("output").innerText = "Удалили свойство 'city' у первого объекта.\n";
+        }
+
+        //проверка существования свойства
+        function checkProperty() {
+            let p = people[0];
+            let text = "Проверка существования свойств:\n";
+
+            text += "\nВозраст: " + ("age" in p);
+            text += "\nblabla: " + ("blabla" in p) + "\n";
+            document.getElementById("output").innerText = text;
+        }
+
+        //поиск по имени
+        function scanByName() {
+            let name = document.getElementById("scan_name").value;
+            let found = false; // Флаг, указывающий, найдено ли совпадение
+            let output = '';
+
+            for (let i = 0; i < people.length; i++) {
+                let p = people[i];
+                if (name === p.name) {
+                    output += "Имя: " + p.name + "\n";
+                    output += "Возраст: " + p.age + "\n";
+                    output += "Город: " + (p.city ?? "не указано") + "\n\n";
+                    found = true; // Устанавливаем флаг, если нашли совпадение
+                    break; // Если нужно найти только первое совпадение, можно выйти из цикла
+                }
+            }
+
+            if (!found) {
+                output = "Данных нету"; // Устанавливаем сообщение, если ничего не нашли
+            }
+            document.getElementById("output").innerText = output; // Устанавливаем результат в один раз
+        }
+
+        //дополнительная информация
+        function info() {
+            const infoElement = document.querySelector('.info');
+            if (infoElement.style.display == 'none') { infoElement.style.display = 'block'; }
+            else {
+                infoElement.style.display = 'none';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
