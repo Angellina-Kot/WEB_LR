@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -189,6 +189,161 @@
         document.addEventListener('DOMContentLoaded', () => {
             const colors = ['red', 'green', 'blue', 'yellow'];
             const game = new AdvancedMemoryGame(colors);
+        });
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MemoryGame (OOP)</title>
+    <style>
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Тренажер памяти</h1>
+    <p>Запомните последовательность!</p>
+
+    <div id="game-board"></div>
+    <button id="start-button">Начать игру</button>
+    <p id="message"></p>
+
+    <script>
+        // Базовый класс
+        class BaseGame {
+            _colors = ['red', 'green', 'blue', 'yellow']; // защищённое поле
+
+            constructor() {
+                this.sequence = [];
+                this.playerSequence = [];
+                this.isPlaying = false;
+                this.startButton = document.getElementById('start-button');
+                this.messageElement = document.getElementById('message');
+                this.boardElement = document.getElementById('game-board');
+            }
+
+            // Публичный метод
+            startGame() {
+                this.sequence = [];
+                this.playerSequence = [];
+                this.isPlaying = true;
+                this.messageElement.innerText = '';
+                this.#generateSequence();
+                this.showSequence();
+            }
+
+            // Приватный метод
+            #generateSequence() {
+                for (let i = 0; i < 5; i++) {
+                    const randomColor = this._colors[Math.floor(Math.random() * this._colors.length)];
+                    this.sequence.push(randomColor);
+                }
+            }
+
+            // Метод для показа последовательности (будет переопределён в наследнике)
+            showSequence() {
+                alert("Базовый класс: последовательность — " + this.sequence.join(', '));
+            }
+
+            // Защищённый метод
+            _highlightColor(color) {
+                const box = document.getElementById(color);
+                box.style.backgroundColor = 'white';
+                setTimeout(() => {
+                    box.style.backgroundColor = color;
+                }, 500);
+            }
+        }
+
+        // Класс-наследник
+        class MemoryGame extends BaseGame {
+            constructor() {
+                super();
+                this.startButton.addEventListener('click', () => this.startGame());
+                this.#createBoard();
+            }
+
+            // Переопределение метода showSequence()
+            showSequence() {
+                let index = 0;
+                const interval = setInterval(() => {
+                    if (index < this.sequence.length) {
+                        this._highlightColor(this.sequence[index]); // используем защищённый метод
+                        index++;
+                    } else {
+                        clearInterval(interval);
+                        this.messageElement.innerText = 'Теперь ваша очередь!';
+                        this.#enableInput();
+                    }
+                }, 1000);
+            }
+
+            // Приватный метод для включения ввода
+            #enableInput() {
+                this._colors.forEach(color => {
+                    const box = document.getElementById(color);
+                    box.onclick = () => this.#playerTurn(color);
+                });
+            }
+
+            // Приватный метод обработки хода игрока
+            #playerTurn(color) {
+                this.playerSequence.push(color);
+                this._highlightColor(color);
+                this.#checkSequence();
+            }
+
+            // Приватный метод проверки
+            #checkSequence() {
+                for (let i = 0; i < this.playerSequence.length; i++) {
+                    if (this.playerSequence[i] !== this.sequence[i]) {
+                        this.#endGame(false);
+                        return;
+                    }
+                }
+                if (this.playerSequence.length === this.sequence.length) {
+                    this.#endGame(true);
+                }
+            }
+
+            // Приватный метод завершения игры
+            #endGame(win) {
+                this.isPlaying = false;
+                if (win) {
+                    this.messageElement.innerText = 'Вы победили!';
+                } else {
+                    this.messageElement.innerText =
+                        'Вы проиграли! Правильная последовательность: ' + this.sequence.join(', ');
+                }
+            }
+
+            // Приватный метод для создания игрового поля
+            #createBoard() {
+                this._colors.forEach(color => {
+                    const box = document.createElement('div');
+                    box.className = 'color-box';
+                    box.id = color;
+                    box.style.backgroundColor = color;
+                    this.boardElement.appendChild(box);
+                });
+            }
+        }
+
+        // Запуск
+        document.addEventListener('DOMContentLoaded', () => {
+            new MemoryGame();
         });
     </script>
 </body>
