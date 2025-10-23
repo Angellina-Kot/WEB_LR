@@ -1,0 +1,18 @@
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    /* Скрываем сообщение об ошибке по умолчанию */
+}
+
+.error {
+    border: 1px solid red;
+    /* Подсвечиваем поля с ошибками */
+}
+
+.success {
+    color: green;
+    font-size: 1em;
+    display: none;
+    /* Скрываем сообщение об успехе */
+}
