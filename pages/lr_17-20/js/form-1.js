@@ -6,6 +6,7 @@ document.getElementById('return-to-form').addEventListener('click', function () 
 // document.getElementById('open-form-button').addEventListener('click', function () {
 //     document.getElementById('popup').style.display = 'flex';    
 // });
+
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
     document.getElementById('overlay').style.display = 'block';
@@ -24,7 +25,6 @@ document.getElementById('return-to-site').addEventListener('click', function () 
 });
 
 // document.getElementById('login-form').addEventListener('submit', function (event) {
-//     event.preventDefault(); // Предотвратить стандартную отправку формы
     //валидация полей формы
     document.getElementById('submit').addEventListener('click', function (e) {
         e.preventDefault(); // Отменяем стандартное поведение (отправку формы)
@@ -83,12 +83,20 @@ document.getElementById('return-to-site').addEventListener('click', function () 
             message1 += "Важность: " + sliderValueText;
             // Вывод результата
             alert(message1);
+
+            // Очистка полей формы
+            nameInput.value = '';
+            emailInput.value = '';
+            phoneInput.value = '';
+            commentInput.value = '';
+            urgentToggle.checked = false;
+            consentCheckbox.checked = false;
+            sliderValueElement.textContent = '0'; // Или установите нужное начальное значение
+
         } else {
             alert(messages.join("\n"));
         }
     });
-//     this.reset(); // Очистить форму
-// });
 
 
 
@@ -130,56 +138,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// let slider = document.getElementById('slider');
-// let thumb = slider.querySelector('.thumb');
-// let valueBox = document.getElementById('slider-value');
-// let shiftX = 0;
-
-// function updateValue(newLeft) {
-//     let rightEdge = slider.offsetWidth - thumb.offsetWidth;
-//     let percent = Math.round((newLeft / rightEdge) * 100);
-//     valueBox.textContent = percent + '%';
-//     thumb.dataset.value = percent; // сохраняем значение в dataset (можно потом достать)
-// }
-
-
-// document.getElementById('submit').addEventListener('click', function () {
-//     const toggle = document.getElementById('urgent-toggle');
-//     const urgentStatus = toggle.checked;
-
-//     // Выводим статус на экран
-//     document.getElementById('output').textContent = urgentStatus ? "Это срочная задача" : "Это не срочная задача";
-
-//     // Создаем объект для JSON
-//     const statusData = {
-//         urgent: urgentStatus
-//     };
-
-//     // Преобразуем объект в JSON
-//     const jsonData = JSON.stringify(statusData);
-//     console.log("JSON данные:", jsonData);
-
-//     // Сохраняем данные в cookies
-//     document.cookie = `urgentStatus=${urgentStatus}; path=/; max-age=3600`; // cookie будет доступно 1 час
-// });
-
-// document.getElementById('save-btn').addEventListener('click', function () {
-//     const consentCheckbox = document.getElementById('consent');
-//     const consentStatus = consentCheckbox.checked; // Получаем состояние чекбокса
-
-//     // Выводим статус на экран
-//     const outputText = consentStatus ? "Согласие дано" : "Согласие не дано";
-//     document.getElementById('output').textContent = outputText;
-
-//     // Создаем объект для JSON
-//     const consentData = {
-//         consent: consentStatus
-//     };
-
-//     // Преобразуем объект в JSON
-//     const jsonData = JSON.stringify(consentData);
-//     console.log("JSON данные:", jsonData);
-
-//     // Сохраняем данные в cookies
-//     document.cookie = `consentStatus=${consentStatus}; path=/; max-age=3600`; // cookie будет доступно 1 час
-// });

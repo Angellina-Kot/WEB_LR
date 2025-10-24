@@ -1,80 +1,29 @@
-// Данные об услугах в формате JSON
-const servicesData = {
-    "services": [
-        {
-            "id": 1,
-            "title": "Работа с информацией",
-            "price": 15000,
-            "image": "./img/Работа_инф-я.png",
-            "features": [
-                "Поиск и проверка информации",
-                "Составление персонального досье",
-                "Работа с репутацией (защита персональных данных)",
-                "Информация по номеру телефона"
-            ]
-        },
-        {
-            "id": 2,
-            "title": "Розыск",
-            "price": 15000,
-            "image": "./img/Розыск.png",
-            "features": [
-                "Розыск должника/мошенника",
-                "Поиск пропавших людей",
-                "Поиск родственников",
-                "Поиск имущества"
-            ]
-        },
-        {
-            "id": 3,
-            "title": "Слежка и наблюдение",
-            "price": 15000,
-            "image": "./img/Слежка.png",
-            "features": [
-                "Наружное наблюдение",
-                "Контрнаблюдение",
-                "Проверка образа жизни ребенка"
-            ]
-        },
-        {
-            "id": 4,
-            "title": "Бизнес-разведка",
-            "price": 15000,
-            "image": "./img/Бизнес-разведка.png",
-            "features": [
-                "Проверка контрагентов",
-                "Досье на компанию",
-                "Внештатная служба безопасности",
-                "Корпоративное расследование"
-            ]
-        },
-        {
-            "id": 5,
-            "title": "Сопровождение гражданских дел",
-            "price": 15000,
-            "image": "./img/Сопровождение_дел.png",
-            "features": [
-                "Оказание юридической помощи",
-                "Частное расследование преступлений",
-                "Содействие правоохранительным органам"
-            ]
-        },
-        {
-            "id": 6,
-            "title": "Защита",
-            "price": 15000,
-            "image": "./img/Защита.png",
-            "features": [
-                "Защита при шантаже и угрозах",
-                "Безопасность семьи и детей",
-                "Помощь в подготовке и сопровождение в поездках"
-            ]
+
+// Глобальная переменная для хранения данных об услугах
+let servicesData = {};
+
+// Функция загрузки данных из JSON файла
+async function loadServicesData() {
+    try {
+        const response = await fetch('./services.json');
+        if (!response.ok) {
+            throw new Error('Ошибка загрузки данных об услугах');
         }
-    ]
-};
+        servicesData = await response.json();
+        console.log('Данные об услугах загружены:', servicesData);
+        return servicesData;
+    } catch (error) {
+        console.error('Ошибка при загрузке services.json:', error);
+        // Можно добавить fallback данные или показать сообщение об ошибке
+        return { services: [] };
+    }
+}
 
 // Инициализация приложения после загрузки DOM
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    // Загружаем данные об услугах
+    await loadServicesData();
+    
     // Получаем элементы DOM
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
