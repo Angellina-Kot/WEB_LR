@@ -1,15 +1,17 @@
 //слайдер
-$('.prev-slide').on('click', function () {
-    $('.services__inner').slick('slickPrev');
-});
+// $('.prev-slide').on('click', function () {
+//     $('.services__inner').slick('slickPrev');
+// });
 
-$('.next-slide').on('click', function () {
-    $('.services__inner').slick('slickNext');
-});
+// $('.next-slide').on('click', function () {
+//     $('.services__inner').slick('slickNext');
+// });
+
+
 
 $(".services__inner").slick({
     dots: 0,
-    autoplay: !0,
+    autoplay: 0,
     arrows: false,
     autoplaySpeed: 3e3,
     slidesToShow: 4,
@@ -31,7 +33,18 @@ $(".services__inner").slick({
             settings: { slidesToShow: 2 }
         },
         { breakpoint: 700, settings: { slidesToShow: 1 } }]
+
 });
+
+// Затем вешаем обработчики на кастомные стрелки
+$('.prev-slide').on('click', function () {
+    $('.services__inner').slick('slickPrev');
+});
+
+$('.next-slide').on('click', function () {
+    $('.services__inner').slick('slickNext');
+});
+
 
 
 document.getElementById('return-to-site').addEventListener('click', function () {
