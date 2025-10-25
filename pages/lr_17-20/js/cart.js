@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <div class="item-price">${item.price.toLocaleString()} у.е. x ${item.quantity}</div>
                     </div>
                     <button class="item-remove" data-id="${item.id}">
-                       &times;  <!-- Или используйте иконку крестика -->
+                       &times;  <!-- иконка крестика -->
                     </button>
                 `;
                 // Добавляем товар в контейнер

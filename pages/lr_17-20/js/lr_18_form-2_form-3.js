@@ -89,8 +89,15 @@ document.getElementById('connection-form').addEventListener('submit', function (
     alert(`Данные формы сохранены:\n${cookieData}`);
 
     this.reset(); // Очистить форму
+
+    // Удаление cookies
+    // deleteCookie('formData');
 });
 
+
+function deleteCookie(name) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+}
 
 
 // document.getElementById('connection-form').addEventListener('submit', function (event) {
