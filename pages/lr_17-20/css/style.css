@@ -1095,7 +1095,7 @@ span.services__arrow {
    gap: 15px;
  }
 
- .btn {
+ .btn-cart {
   /* text-align: center; */
    padding: 15px 25px;
    border: none;
@@ -1105,13 +1105,13 @@ span.services__arrow {
    transition: all 0.3s ease;
  }
 
- .btn-continue {
+ .btn-continue, .btn-clear {
    background: white;
    color: var(--color1);
    border: 1px solid var(--color1);
  }
 
- .btn-continue:hover {
+ .btn-continue:hover, .btn-clear:hover {
    background: #f0f0f0;
  }
 
