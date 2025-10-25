@@ -26,10 +26,10 @@ const storageManager = {
         try {
             const cartData = JSON.stringify(cart);
 
-            // Сохранение в localStorage (основное хранилище)
+            // Сохранение в localStorage
             localStorage.setItem('shoppingCart', cartData);
 
-            // Сохранение в cookies (резервное хранилище на 7 дней)
+            // Сохранение в cookies (на 7 дней)
             const expires = new Date();
             expires.setDate(expires.getDate() + 7);
             document.cookie = `shoppingCart=${encodeURIComponent(cartData)}; expires=${expires.toUTCString()}; path=/`;
@@ -141,26 +141,28 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Функция удаления услуги из корзины
     function removeFromCart(serviceId) {
+
+        // Удаляем товар из массива
         cart = cart.filter(item => item.id !== serviceId);
+
+        // Обновляем отображение
         updateCart();
-        showNotification('Товар удален из корзины');
 
-        // Сохраняем корзину после удаления товара
-        storageManager.saveCart(cart);
-    }
+        // Сохраняем в localStorage
+        const saved = storageManager.saveCart(cart);
 
-    // Функция изменения количества товара
-    function updateQuantity(serviceId, newQuantity) {
-        const item = cart.find(item => item.id === serviceId);
-        if (item) {
-            if (newQuantity <= 0) {
-                removeFromCart(serviceId);
-            } else {
-                item.quantity = newQuantity;
-                updateCart();
-                storageManager.saveCart(cart);
-            }
+        if (saved) {
+            console.log('Корзина сохранена в localStorage после удаления');
+            
+        } else {
+            console.error(' Ошибка сохранения корзины после удаления');
         }
+
+        // Проверяем что действительно удалилось из localStorage
+        setTimeout(() => {
+            const currentCart = localStorage.getItem('shoppingCart');
+            console.log('Проверка localStorage после удаления:', currentCart);
+        }, 100);
     }
 
     // Функция обновления отображения корзины
