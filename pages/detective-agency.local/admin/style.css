@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+}
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-box {
+    background: #020617;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.auth-box input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-nav {
+    background: #020617;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+}
